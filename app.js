@@ -1,12 +1,12 @@
 // Require Libraries
 const express = require('express');
 
-// Require tenorjs near the top of the file
 const Tenor = require('tenorjs').client({
-	// Replace with your own key
-	Key: 'AIzaSyD4cPWx0F4qgiDZc6D6jDrw_N5dxCqhlyY', // https://tenor.com/developer/keyregistration
-	Filter: 'high', // "off", "low", "medium", "high", not case sensitive
+	Key: 'AIzaSyD4cPWx0F4qgiDZc6D6jDrw_N5dxCqhlyY', // https://developers.google.com/tenor/guides/quickstart
+	Filter: 'off', // "off", "low", "medium", "high", not case sensitive
 	Locale: 'en_US', // Your locale here, case-sensitivity depends on input
+	MediaFilter: 'minimal', // either minimal or basic, not case sensitive
+	DateFormat: 'D/MM/YYYY - H:mm:ss A', // Change this accordingly
 });
 
 // App Setup
@@ -37,7 +37,7 @@ app.set('views', './views');
 // Routes
 app.get('/', (req, res) => {
 	// Handle the home page when we haven't queried yet
-	term = '';
+	term = 'Tacos';
 	if (req.query.term) {
 		term = req.query.term;
 	}
